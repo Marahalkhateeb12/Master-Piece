@@ -1,19 +1,25 @@
 <?php
 
 use App\Http\Controllers\AboutController;
+use App\Http\Controllers\BlogController;
 use App\Http\Controllers\BookingController;
 use App\Http\Controllers\ConfirmationController;
 use App\Http\Controllers\ContactController;
 use App\Http\Controllers\DashboardController;
+use App\Http\Controllers\DateChangeController;
+use App\Http\Controllers\DJController;
 use App\Http\Controllers\HallBookController;
 use App\Http\Controllers\HallController;
 use App\Http\Controllers\HomePageController;
+use App\Http\Controllers\LocateController;
+use App\Http\Controllers\LovlyController;
 use App\Http\Controllers\MessageController;
 use App\Http\Controllers\OurHallController;
 use App\Http\Controllers\OurHallsController;
 use App\Http\Controllers\OurSubHallController;
 use App\Http\Controllers\SubHallController;
 use App\Http\Controllers\UserController;
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -75,9 +81,9 @@ Route::get('/adminBooking', function () {
 Route::get('/adminMessages', function () {
     return view('Admin.messages');
 });
-Route::get('/login', function () {
-    return view('WeddingVenue.login');
-});
+// Route::get('/login', function () {
+//     return view('WeddingVenue.login');
+// });
 Route::get('/register', function () {
     return view('WeddingVenue.signin');
 });
@@ -96,9 +102,16 @@ Route::get('/book', [HallBookController::class, 'getbooks'])->name('book');
 Route::get('/confirmation', [ConfirmationController::class, 'confirmation'])->name('confirmation');
 Route::get('/admin', [DashboardController::class, 'admin'])->name('admin');
 Route::get('/SingleHall/{subhal}', [OurSubHallController::class, 'getSubHalls'])->name('singlehall');
-
+Route::put('/checkAndBook/{subhal}/{day}/{time}', [OurSubHallController::class, 'checkAndBook'])->name('checkAndBook');
+Route::get('/dateChange/{subhal}', [DateChangeController::class, 'dateChange'])->name('dateChange');
 Route::resource('/', HomePageController::class);
-
-
+Route::resource('blogSingle', BlogController::class);
+Route::resource('lovelyDecoration', LovlyController::class);
+Route::resource('liveMusicAndDj', DJController::class);
+Route::resource('Locate', LocateController::class);
+// Route::get('/blog-single', function () {
+//     return view('WeddingVenue.blog-single');
+// });
+Auth::routes();
 
 Route::get('/home', [App\Http\Controllers\HomeController::class, 'indexx'])->name('home');

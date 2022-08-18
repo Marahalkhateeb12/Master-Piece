@@ -152,11 +152,11 @@
 						</li><!-- / Elements -->
 						<!-- About -->
 						<li class="dropdown " style="font-weight: bold">
-							<a href="about">About Us</a>
+							<a href="/about">About Us</a>
 						</li><!-- / About -->
 						<!-- Contact -->
 						<li class="dropdown " style="font-weight: bold">
-							<a href="contact">Contact Us</a>
+							<a href="/contact">Contact Us</a>
 						</li>
 						<!-- / Contact -->
 						<li>

@@ -1,115 +1,125 @@
-@extends('MasterPage.master')
+@extends('MasterPage.mast')
 @section('content')
+    <!--page-title-->
+    <div class="ttm-page-title-row">
+        <div class="ttm-page-title-row-inner ttm-bgcolor-darkgrey">
+            <div class="container">
+                <div class="row align-items-center">
+                    <div class="col-lg-12">
+                        <div class="page-title-heading">
+                            <h2 class="title">Booking</h2>
+                        </div>
+                        <div class="heading-seperator">
+                            <span></span>
+                        </div>
+                        <div class="breadcrumb-wrapper">
+                            <span>
+                                <a title="Homepage" href="index-2.html">Home</a>
+                            </span>
+                            <span class="ttm-bread-sep">&gt;</span>
+                            <span> Booking</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!--page-title end-->
+
+
+    <!--site-main start-->
+    <div class="site-main">
+
+        <section class="ttm-row checkout-section clearfix">
+            <div class="container">
+                <!-- row -->
+                <div class="row">
+                    <div class="col-lg-12">
+
+                        <form name="checkout" method="post" class="checkout row" action="{{route('booking.store',$subhall)}}">
+                            @csrf
+                            <div class="col-lg-6">
+                                <div class="billing-fields">
+                                    <h3>Your Information</h3>
+                                    <div class="row">
+                                        <div class="col-lg-12">
+                                            <div class="form-row">
+                                                <label>Your Name&nbsp;<abbr class="required"
+                                                        title="required"></abbr></label>
+                                                <input type="text" class="input-tex" name="name" placeholder=""
+                                                    value="">
+                                            </div>
+                                        </div>
+
+                                    </div>
+                                    <div class="row">
+                                        <div class="col-lg-12">
+                                            <div class="form-row">
+                                                <label>Your Email&nbsp;<abbr class="required"
+                                                        title="required"></abbr></label>
+                                                <input type="email" class="input-tex" name="email"
+                                                    placeholder="example@mail.com" value="">
+                                            </div>
+                                        </div>
+
+                                    </div>
+                                    <p class="form-row">
+                                        <label>Address&nbsp;</span></label>
+                                        <input type="text" class="input-text " name="address" placeholder="Your Address"
+                                            value="" required>
+                                    </p>
+
+                                    <div class="row">
+                                        <div class="col-lg-12">
+                                            <div class="form-row">
+                                                <label>Mobile Number&nbsp;<abbr class="required"
+                                                        title="required"></abbr></label>
+                                                <input type="number" class="input-tex" name="mobile"
+                                                    placeholder="077-7777777" value="">
+                                            </div>
+                                        </div>
+
+                                    </div>
 
 
 
+                                </div>
+                            </div>
+                            <div class="col-lg-6">
+                                <div class="additional-fields">
+                                    <h3>Booking Summary</h3>
+                                    <div class="additional-fields-wrapper">
+                                        <div class="media product-card">
+                                            <a class="pull-left" href="hall-single">
+                                                <img class="media-object" src="{{asset('public/adminImage/'.$subhall->image1)}}" width="80px"
+                                                    alt="Image" />
+                                            </a>
+                                            <div class="media-body">
+                                                <h5 class="media-heading">Hayat Irbid Halls
+                                                </h5>
+                                                <p class="price">{{$subhall->subhall_name}}</p>
+                                                <p class="price">{{$date}} /// {{$time}}</p>
 
-	<section class="page-header">
-		<div class="container">
-			<div class="row">
-				<div class="col-md-12">
-					<div class="content">
-						<h1 class="page-name">Booking</h1>
-						<ol class="breadcrumb">
-							<li><a href="indexx">Home</a></li>
-							<li class="active">Booking</li>
-						</ol>
-					</div>
-				</div>
-			</div>
-		</div>
-	</section>
-	<div class="page-wrapper">
-		<div class="checkout shopping">
-			<div class="container">
-				<div class="row">
-					<div class="col-md-8">
-						<div class="block billing-details">
-							<h4 class="widget-title">Your Details</h4>
-							<form class="checkout-form">
-								<label for="full_name" class="co">Full Name</label>
-								<div class="form-group">
-									<input type="text" class="form-control" id="full_name" placeholder="Name" required>
-								</div>
-								<label for="user_address" class="co">Address</label>
-								<div class="form-group">
 
-									<input type="text" class="form-control" id="user_address" placeholder="Address" required>
-								</div>
-								<label for="email" class="co">Email</label>
-								<div class="form-group">
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
 
-									<input type="email" class="form-control" id="email" placeholder="Email" required>
-								</div>
-								<label for="mobile" class="co">Mobile Number </label>
-								<div class="form-group">
-									<input type="number" class="form-control" id="mobile" placeholder="Mobile Number" required>
-								</div>
-								<a href="confirmation" class="btn btn-main mt-20">Book</a>
-							</form>
-						</div>
+                            </div>
+                            <button type="submit"
+                                class="button ttm-btn ttm-btn-size-sm ttm-btn-style-fill ttm-btn-shape-rounded ttm-btn-color-dark pull-right"
+                                name="checkout_place_order" id="place_order" value="Place order"
+                                data-value="Place order">Book</button>
 
-					</div>
-					<div class="col-md-4">
-						<div class="product-checkout-details">
-							<div class="block">
-								<h4 class="widget-title">Booking Summary</h4>
-								<div class="media product-card">
-									<a class="pull-left" href="hall-single">
-										<img class="media-object" src="images/halls/Hayat/2.jpg" alt="Image" />
-									</a>
-									<div class="media-body">
-										<h4 class="media-heading"><a href="hall-single">Hayat Irbid Halls
-												</a></h4>
-										<p class="price">Aldahabia</p>
-										<p class="price">30-6-2022 ///  8:00-10:00</p>
-										
-										
-									</div>
-								</div>
-								<!-- <div class="discount-code">
-									<p>Have a discount ? <a data-toggle="modal" data-target="#coupon-modal"
-											href="#!">enter it here</a></p>
-								</div>
-								<ul class="summary-prices">
-									<li>
-										<span>Subtotal:</span>
-										<span class="price">$190</span>
-									</li>
-									<li>
-										<span>Shipping:</span>
-										<span>Free</span>
-									</li>
-								</ul> -->
-								<div class="summary-total">
-									<span>Total</span>
-									<span>1000 JOD</span>
-									
-								</div>
-								<!-- <div class="verified-icon">
-									<img src="images/shop/verified.png">
-								</div> -->
-							</div>
-						</div>
-					</div>
-				</div>
-			</div>
-		</div>
-	</div>
-	<!-- Modal -->
-	<!-- <div class="modal fade" id="coupon-modal" tabindex="-1" role="dialog">
-		<div class="modal-dialog" role="document">
-			<div class="modal-content">
-				<div class="modal-body">
-					<form>
-						<div class="form-group">
-							<input class="form-control" type="text" placeholder="Enter Coupon Code">
-						</div>
-						<button type="submit" class="btn btn-main">Apply Coupon</button>
-					</form>
-				</div>
-			</div>
-		</div>
-	</div> -->
+                    </div>
+                </div>
+                </form>
+            </div>
+    </div>
+    </div>
+    </section>
 
-	@endsection
+    </div>
+    <!--site-main end-->
+@endsection

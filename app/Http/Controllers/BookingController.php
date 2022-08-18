@@ -3,6 +3,8 @@
 namespace App\Http\Controllers;
 
 use App\Models\Booking;
+use App\Models\Date;
+use App\Models\Hall;
 use App\Models\Reservation;
 use App\Models\Sub_Hall;
 use App\Models\User;
@@ -41,9 +43,32 @@ class BookingController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
+    public function store(Request $request,$subhal)
     {
-        //
+        $halls=Hall::latest()->paginate(10);
+            $request->validate([
+                'date' => 'required',
+                'time' => 'required',
+    
+    
+            ]);
+            $newBook = new Reservation();
+            $newBook->user_id = 1;
+            $newBook->sub_hall_id = $subhal->id;
+            $newBook->Time=$request->time;
+    
+            $newBook->save();
+    
+            Date::where('date', $request->date)->where('time', $request->time)->update([
+                'status' => 1,
+    
+            ]);
+
+
+     return view('WeddingVenue.confirmation',compact('halls'))
+        ->with(request()->input('page'));
+            
+        
     }
 
     /**

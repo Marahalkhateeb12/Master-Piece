@@ -1848,12 +1848,12 @@ h6 {
 }
 
 a {
-  color: #feacc6;
+  color: #c78665;
 }
 
 a:hover,
 a:focus {
-  color: #feacc6;
+  color: #c78665;
 }
 
 h1,
@@ -1957,7 +1957,8 @@ p.description {
 .text-primary,
 a.text-primary:focus,
 a.text-primary:hover {
-  color: #feacc6 !important;
+  color: #c78665 !important;
+  font-weight: bold;
 }
 
 .text-info,
@@ -4077,11 +4078,11 @@ Created using IcoMoon - icomoon.io
 }
 .sidebar[data-color="pink"]:after,
 .off-canvas-sidebar[data-color="blue"]:after {
-  background: #feacc6;
+  background: #c78665;
 }
 .sidebar[data-color="pink"] .nav li.active>a:not([data-toggle="collapse"]),
 .off-canvas-sidebar[data-color="pink"] .nav li.active>a:not([data-toggle="collapse"]) {
-  color: #feacc6;
+  color: #c78665;
 }
 .sidebar[data-color="blue"] .nav li.active>a:not([data-toggle="collapse"]),
 .off-canvas-sidebar[data-color="blue"] .nav li.active>a:not([data-toggle="collapse"]) {

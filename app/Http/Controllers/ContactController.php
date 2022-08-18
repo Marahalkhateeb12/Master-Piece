@@ -16,7 +16,7 @@ class ContactController extends Controller
     public function index()
     {
         $halls = Hall::latest()->paginate(10);
-        return view('WeddingVenue.contact',compact('halls',));
+        return view('WeddingVenue.contact',compact('halls',))->with('success', 'Message Sent successfully.');;
     
     }
 
